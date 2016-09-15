@@ -21,6 +21,11 @@ struct AgentStore : DeviceStore {
   std::string minorVersionReplacement;
 };
 
+struct VendorStore : DeviceStore {
+  std::string vendor;
+  std::string model;
+};
+
 typedef AgentStore OsStore;
 typedef AgentStore BrowserStore;
 
@@ -85,11 +90,48 @@ struct UAStore {
       }
       deviceStore.push_back(device);
     }
+    if (const YAML::Node *p = regexes.FindValue("device_type_parsers")) {
+      const auto& device_type_parsers = *p;
+      for (const auto& d : device_type_parsers) {
+        DeviceStore device;
+        for (auto it = d.begin(); it != d.end(); ++it) {
+          const std::string key = it.first().to<std::string>();
+          const std::string value = it.second().to<std::string>();
+          if (key == "regex") {
+            device.regExpr = value;
+          } else if (key == "device_type_replacement") {
+            device.replacement = value;
+          } else {
+            CHECK(false);
+          }
+        }
+      deviceTypeStore.push_back(device);
+      }
+    }
+    std::map<std::string, std::string> modelVendor;
+    if (const YAML::Node *p = regexes.FindValue("vendor_model_parsers")) {
+      const auto& vendor_model_parsers = *p;
+      for (const auto& d : vendor_model_parsers) {
+        modelVendor.insert(std::make_pair(d[2].to<std::string>(), d[1].to<std::string>()));
+      }
+    }
+    if (const YAML::Node *p = regexes.FindValue("device_model_parsers")) {
+      const auto& device_model_parsers = *p;
+      for (const auto& d : device_model_parsers) {
+        VendorStore vs;
+        vs.regExpr = d[0].to<std::string>();
+        vs.model = d[1].to<std::string>();
+        std::map<std::string, std::string>::iterator it = modelVendor.find(vs.model);
+        vs.vendor = it != modelVendor.end() ? it->second : "";
+        vendorStore.push_back(vs);
+      }
+    }
   }
-
   std::vector<DeviceStore> deviceStore;
   std::vector<OsStore> osStore;
   std::vector<BrowserStore> browserStore;
+  std::vector<DeviceStore> deviceTypeStore;
+  std::vector<VendorStore> vendorStore;
 };
 
 template<class AGENT, class AGENT_STORE>
@@ -171,6 +213,27 @@ UserAgent parseImpl(const std::string& ua, const UAStore* ua_store) {
       device.family = "Other";
     }
   }
+
+  for (const auto& d : ua_store->deviceTypeStore) {
+    auto& device = uagent.deviceType;
+    boost::smatch m;
+    if (boost::regex_search(ua, m, d.regExpr)) {
+        device.family = d.replacement;
+      break;
+    } else {
+      device.family = "PC";
+    }
+  }
+  for (const auto& d : ua_store->vendorStore) {
+    auto& vendor = uagent.vendor;
+    boost::smatch m;
+    if (boost::regex_search(ua, m, d.regExpr)) {
+        vendor.family = d.vendor;
+        vendor.major = d.model;
+      break;
+    }
+  }
+
 
   return uagent;
 }

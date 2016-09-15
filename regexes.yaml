@@ -608,37 +608,50 @@ os_parsers:
     os_replacement: 'Windows Mobile'
 
   - regex: '(Windows (?:NT 5\.2|NT 5\.1))'
-    os_replacement: 'Windows XP'
+    os_replacement: 'Windows'
+    os_v1_replacement: 'XP'
 
   - regex: '(Windows NT 6\.1)'
-    os_replacement: 'Windows 7'
+    os_replacement: 'Windows'
+    os_v1_replacement: '7'
 
   - regex: '(Windows NT 6\.0)'
-    os_replacement: 'Windows Vista'
+    os_replacement: 'Windows'
+    os_v1_replacement: 'Vista'
 
   - regex: '(Win 9x 4\.90)'
-    os_replacement: 'Windows ME'
+    os_replacement: 'Windows'
+    os_v1_replacement: 'ME'
 
   - regex: '(Windows 98|Windows XP|Windows ME|Windows 95|Windows CE|Windows 7|Windows NT 4\.0|Windows Vista|Windows 2000|Windows 3.1)'
 
   - regex: '(Windows NT 6\.2; ARM;)'
-    os_replacement: 'Windows RT'
+    os_replacement: 'Windows'
+    os_v1_replacement: 'RT'
   - regex: '(Windows NT 6\.2)'
-    os_replacement: 'Windows 8'
+    os_replacement: 'Windows'
+    os_v1_replacement: '8'
 
   - regex: '(Windows NT 6\.3; ARM;)'
-    os_replacement: 'Windows RT 8.1'
+    os_replacement: 'Windows'
+    os_v1_replacement: '8'
+    os_v2_replacement: '1_RT'
   - regex: '(Windows NT 6\.3)'
-    os_replacement: 'Windows 8.1'
+    os_replacement: 'Windows'
+    os_v1_replacement: '8'
+    os_v2_replacement: '1'
 
   - regex: '(Windows NT 5\.0)'
-    os_replacement: 'Windows 2000'
+    os_replacement: 'Windows'
+    os_v1_replacement: '2000'
 
   - regex: '(WinNT4.0)'
-    os_replacement: 'Windows NT 4.0'
+    os_replacement: 'Windows'
+    os_v1_replacement: 'NT_4.0'
 
   - regex: '(Windows ?CE)'
-    os_replacement: 'Windows CE'
+    os_replacement: 'Windows'
+    os_v1_replacement: 'CE'
 
   - regex: 'Win ?(95|98|3.1|NT|ME|2000)'
     os_replacement: 'Windows $1'
@@ -1333,3 +1346,376 @@ device_parsers:
   - regex: '(bingbot|bot|borg|google(^tv)|yahoo|slurp|msnbot|msrbot|openbot|archiver|netresearch|lycos|scooter|altavista|teoma|gigabot|baiduspider|blitzbot|oegp|charlotte|furlbot|http%20client|polybot|htdig|ichiro|mogimogi|larbin|pompos|scrubby|searchsight|seekbot|semanticdiscovery|silk|snappy|speedy|spider|voila|vortex|voyager|zao|zeal|fast\-webcrawler|converacrawler|dataparksearch|findlinks|crawler|Netvibes|Sogou Pic Spider|ICC\-Crawler|Innovazion Crawler|Daumoa|EtaoSpider|A6\-Indexer|YisouSpider|Riddler|DBot|wsr\-agent|Xenu|SeznamBot|PaperLiBot|SputnikBot|CCBot|ProoXiBot|Scrapy|Genieo|Screaming Frog|YahooCacheSystem|CiBra|Nutch)'
     device_replacement: 'Spider'
 
+device_type_parsers:
+  - regex: '(?i)Tablet'
+    device_type_replacement: 'Tablet'
+
+  - regex: 'Tablet PC 2.0'
+    device_type_replacement: 'MediaCenter'
+
+  - regex: '(?i)Windows NT'
+    device_type_replacement: 'PC'
+
+  - regex: '(?i)iPad;'
+    device_type_replacement: 'Tablet'
+
+  - regex: '(?i)iPhone;'
+    device_type_replacement: 'Tablet'
+
+  - regex: '(?i)iPod'
+    device_type_replacement: 'Phone'
+
+  - regex: '(?i)Silk-Accelerated'
+    device_type_replacement: 'Tablet'
+
+  - regex: '(?i)Kindle'
+    device_type_replacement: 'Tablet'
+
+  - regex: '(?i)GT-P'
+    device_type_replacement: 'Tablet'
+
+  - regex: '(?i)Android.+Nexus 7'
+    device_type_replacement: 'Tablet'
+
+  - regex: '(?i)Android.+Mobile'
+    device_type_replacement: 'Phone'
+
+  - regex: '(?i)Android'
+    device_type_replacement: 'Tablet'
+
+  - regex: '(?i)HTC'
+    device_type_replacement: 'Phone'
+
+  - regex: '(?i)Mac OS X'
+    device_type_replacement: 'PC'
+
+  - regex: '(?i)BlackBerry'
+    device_type_replacement: 'Phone'
+
+  - regex: '(?i)X11'
+    device_type_replacement: 'PC'
+
+  - regex: '(?i)Symb'
+    device_type_replacement: 'Phone'
+
+  - regex: '(?i)Nokia'
+    device_type_replacement: 'Phone'
+
+  - regex: '(?i)Opera Mini'
+    device_type_replacement: 'Phone'
+
+  - regex: '(?i)Phone'
+    device_type_replacement: 'Phone'
+
+  - regex: '(?i)Mobile'
+    device_type_replacement: 'Phone'
+
+vendor_model_parsers:
+  - [1, Apple, Apple_iPad]
+  - [2, Apple, Apple_iPod]
+  - [3, Apple, Apple_iPhone]
+  - [4, BlackBerry, BlackBerry]
+  - [5, HTC, HTC_Desire]
+  - [6, HTC, HTC_Other]
+  - [7, Nokia, Nokia]
+  - [8, Samsung, Samsung_Galaxy]
+  - [9, Samsung, Samsung_Other]
+  - [10, LG, LG]
+  - [11, Sony, Sony]
+  - [12, Motorola, Motorola_Droid]
+  - [13, Huawei, Huawei]
+  - [14, Amazon, Amazon_Kindle]
+  - [15, Motorola, Motorola_Other]
+  - [16, Pantech, Pantech]
+  - [17, Samsung, Samsung_Galaxy_SII]
+  - [18, Samsung, Samsung_Galaxy_SIII]
+  - [19, Samsung, Samsung_Galaxy_SIV]
+  - [20, Samsung, Samsung_Galaxy_Note]
+  - [21, Samsung, Samsung_Galaxy_NoteII]
+  - [22, Samsung, Samsung_Galaxy_Note3]
+  - [23, Samsung, Samsung_Galaxy_S]
+  - [24, Samsung, Samsung_Galaxy_ACE]
+  - [25, Samsung, Samsung_Galaxy_Gio]
+  - [26, Samsung, Samsung_Galaxy_Tab]
+  - [27, Samsung, Samsung_Galaxy_Tab_2]
+  - [28, Samsung, Samsung_Galaxy_Tab_3]
+  - [29, Samsung, Samsung_Galaxy_Note_Tablet]
+  - [30, Sony, Sony_Xperia]
+  - [31, LG, LG_Nexus_4]
+  - [32, Asus, Asus_Nexus_7]
+  - [33, Samsung, Samsung_Nexus_10]
+  - [34, Acer, Acer_Iconia_Tab]
+  - [35, Lenovo, Lenovo_IdeaTab]
+  - [36, Lenovo, Lenovo]
+  - [37, Medion, Medion_LIFETAB]
+  - [38, Asus, Asus_Transformer_Pad]
+  - [39, Fujitsu, Fujitsu]
+  - [40, Kyocera, Kyocera]
+  - [41, Sharp, Sharp]
+  - [42, Panasonic, Panasonic]
+  - [43, NEC, NEC]
+  - [44, ZTE, ZTE]
+  - [45, Samsung, Samsung_Nexus_S]
+  - [46, ODYS, ODYS]
+  - [47, Megafon, Megafon]
+  - [48, MTS, MTS]
+  - [49, Beeline, Beeline]
+  - [50, Fly, Fly]
+  - [51, ALCATEL, ALCATEL]
+  - [52, Philips, Philips]
+  - [53, Prestigio, Prestigio]
+  - [54, Explay, Explay]
+  - [55, WEXLER, WEXLER]
+
+device_model_parsers:
+  - ['(?i)iPad;', Apple_iPad]
+  - ['(?i)iPod', Apple_iPod]
+  - ['(?i)iPhone;', Apple_iPhone]
+  - ['(?i)BlackBerry', BlackBerry]
+  - ['(?i)Desire', HTC_Desire]
+  - ['(?i)HTC', HTC_Other]
+  - ['(?i)Nokia', Nokia]
+  - ['(?i)GT-S5660', Samsung_Galaxy_Gio]
+  - ['(?i)GT-S5830', Samsung_Galaxy_ACE]
+  - ['(?i)GT-S7500', Samsung_Galaxy_ACE]
+  - ['(?i)GT-I8160', Samsung_Galaxy_ACE]
+  - ['(?i)GT-S7560', Samsung_Galaxy_ACE]
+  - ['(?i)GT-S5839', Samsung_Galaxy_ACE]
+  - ['(?i)GT-I9003', Samsung_Galaxy_S]
+  - ['(?i)GT-I9000', Samsung_Galaxy_S]
+  - ['(?i)GT-I9008', Samsung_Galaxy_S]
+  - ['(?i)GT-I9088', Samsung_Galaxy_S]
+  - ['(?i)GT-I9001', Samsung_Galaxy_S]
+  - ['(?i)GT-I9070', Samsung_Galaxy_S]
+  - ['(?i)GT-S7562', Samsung_Galaxy_S]
+  - ['(?i)GT-I9100', Samsung_Galaxy_SII]
+  - ['(?i)GT-I9108', Samsung_Galaxy_SII]
+  - ['(?i)GT-I9210', Samsung_Galaxy_SII]
+  - ['(?i)GT-i9210', Samsung_Galaxy_SII]
+  - ['(?i)GT-I9105', Samsung_Galaxy_SII]
+  - ['(?i)GT-I9300', Samsung_Galaxy_SIII]
+  - ['(?i)GT-I9305', Samsung_Galaxy_SIII]
+  - ['(?i)GT-I9308', Samsung_Galaxy_SIII]
+  - ['(?i)GT-I8190', Samsung_Galaxy_SIII]
+  - ['(?i)GT-I9500', Samsung_Galaxy_SIV]
+  - ['(?i)GT-I9505', Samsung_Galaxy_SIV]
+  - ['(?i)GT-I9508', Samsung_Galaxy_SIV]
+  - ['(?i)GT-I9502', Samsung_Galaxy_SIV]
+  - ['(?i)GT-I9195', Samsung_Galaxy_SIV]
+  - ['(?i)GT-N7000', Samsung_Galaxy_Note]
+  - ['(?i)GT-N7005', Samsung_Galaxy_Note]
+  - ['(?i)GT-I9220', Samsung_Galaxy_Note]
+  - ['(?i)GT-I9228', Samsung_Galaxy_Note]
+  - ['(?i)GT-N7100', Samsung_Galaxy_NoteII]
+  - ['(?i)GT-N7102', Samsung_Galaxy_NoteII]
+  - ['(?i)GT-N7105', Samsung_Galaxy_NoteII]
+  - ['(?i)GT-N7108', Samsung_Galaxy_NoteII]
+  - ['(?i)GT-N9006', Samsung_Galaxy_Note3]
+  - ['(?i)GT-N9005', Samsung_Galaxy_Note3]
+  - ['(?i)GT-P1010', Samsung_Galaxy_Tab]
+  - ['(?i)GT-P1000', Samsung_Galaxy_Tab]
+  - ['(?i)GT-P6210', Samsung_Galaxy_Tab]
+  - ['(?i)GT-P6200', Samsung_Galaxy_Tab]
+  - ['(?i)GT-P7310', Samsung_Galaxy_Tab]
+  - ['(?i)GT-P7300', Samsung_Galaxy_Tab]
+  - ['(?i)GT-P6810', Samsung_Galaxy_Tab]
+  - ['(?i)GT-P6800', Samsung_Galaxy_Tab]
+  - ['(?i)GT-P7510', Samsung_Galaxy_Tab]
+  - ['(?i)GT-P7500', Samsung_Galaxy_Tab]
+  - ['(?i)GT-P7100', Samsung_Galaxy_Tab]
+  - ['(?i)GT-P3110', Samsung_Galaxy_Tab_2]
+  - ['(?i)GT-P3100', Samsung_Galaxy_Tab_2]
+  - ['(?i)GT-P5110', Samsung_Galaxy_Tab_2]
+  - ['(?i)GT-P5113', Samsung_Galaxy_Tab_2]
+  - ['(?i)GT-P5100', Samsung_Galaxy_Tab_2]
+  - ['(?i)GT-P5210', Samsung_Galaxy_Tab_3]
+  - ['(?i)GT-P5200', Samsung_Galaxy_Tab_3]
+  - ['(?i)GT-P5220', Samsung_Galaxy_Tab_3]
+  - ['(?i)GT-N5100', Samsung_Galaxy_Note_Tablet]
+  - ['(?i)GT-N8000', Samsung_Galaxy_Note_Tablet]
+  - ['(?i)GT-N8010', Samsung_Galaxy_Note_Tablet]
+  - ['(?i)GT-N8020', Samsung_Galaxy_Note_Tablet]
+  - ['(?i)GT-P600', Samsung_Galaxy_Note_Tablet]
+  - ['(?i)GT-P601', Samsung_Galaxy_Note_Tablet]
+  - ['(?i)GT-P605', Samsung_Galaxy_Note_Tablet]
+  - ['(?i)GT-I902', Samsung_Nexus_S]
+  - ['(?i)SGH-I997', Samsung_Galaxy_S]
+  - ['(?i)SGH-I897', Samsung_Galaxy_S]
+  - ['(?i)SGH-I896', Samsung_Galaxy_S]
+  - ['(?i)SGH-T959', Samsung_Galaxy_S]
+  - ['(?i)SGH-N045', Samsung_Galaxy_SIV]
+  - ['(?i)SGH-M919', Samsung_Galaxy_SIV]
+  - ['(?i)SGH-I337', Samsung_Galaxy_SIV]
+  - ['(?i)SGH-T999', Samsung_Galaxy_SIII]
+  - ['(?i)SGH-I747', Samsung_Galaxy_SIII]
+  - ['(?i)SGH-N064', Samsung_Galaxy_SIII]
+  - ['(?i)SGH-N035', Samsung_Galaxy_SIII]
+  - ['(?i)SGH-I757', Samsung_Galaxy_SII]
+  - ['(?i)SGH-I727', Samsung_Galaxy_SII]
+  - ['(?i)SGH-I927', Samsung_Galaxy_SII]
+  - ['(?i)SGH-T989', Samsung_Galaxy_SII]
+  - ['(?i)SGH-I777', Samsung_Galaxy_SII]
+  - ['(?i)SGH-I717', Samsung_Galaxy_Note]
+  - ['(?i)SGH-T879', Samsung_Galaxy_Note]
+  - ['(?i)SGH-i317', Samsung_Galaxy_NoteII]
+  - ['(?i)SGH-T889', Samsung_Galaxy_NoteII]
+  - ['(?i)SGH-T889V', Samsung_Galaxy_NoteII]
+  - ['(?i)SGH-I957', Samsung_Galaxy_Tab]
+  - ['(?i)SCH-I500', Samsung_Galaxy_S]
+  - ['(?i)SCH-I405', Samsung_Galaxy_S]
+  - ['(?i)SCH-R930', Samsung_Galaxy_S]
+  - ['(?i)SCH-R910', Samsung_Galaxy_S]
+  - ['(?i)SCH-R915', Samsung_Galaxy_S]
+  - ['(?i)SCH-I909', Samsung_Galaxy_S]
+  - ['(?i)SCH-I959', Samsung_Galaxy_SIV]
+  - ['(?i)SCH-R970', Samsung_Galaxy_SIV]
+  - ['(?i)SCH-I545', Samsung_Galaxy_SIV]
+  - ['(?i)SCH-R530', Samsung_Galaxy_SIII]
+  - ['(?i)SCH-I535', Samsung_Galaxy_SIII]
+  - ['(?i)SCH-I939', Samsung_Galaxy_SIII]
+  - ['(?i)SCH-J021', Samsung_Galaxy_SIII]
+  - ['(?i)SCH-R760', Samsung_Galaxy_SII]
+  - ['(?i)SCH-I889', Samsung_Galaxy_Note]
+  - ['(?i)SCH-i605', Samsung_Galaxy_NoteII]
+  - ['(?i)SCH-R950', Samsung_Galaxy_NoteII]
+  - ['(?i)SCH-N719', Samsung_Galaxy_NoteII]
+  - ['(?i)SCH-I800', Samsung_Galaxy_Tab]
+  - ['(?i)SCH-I815', Samsung_Galaxy_Tab]
+  - ['(?i)SCH-I905', Samsung_Galaxy_Tab]
+  - ['(?i)SCH-I915', Samsung_Galaxy_Tab_2]
+  - ['(?i)SCH-I705', Samsung_Galaxy_Tab_2]
+  - ['(?i)SPH-L720', Samsung_Galaxy_SIV]
+  - ['(?i)SPH-L710', Samsung_Galaxy_SIII]
+  - ['(?i)SPH-D710', Samsung_Galaxy_SII]
+  - ['(?i)SPH-L900', Samsung_Galaxy_NoteII]
+  - ['(?i)SPH-D720', Samsung_Nexus_S]
+  - ['(?i)SHW-M110S', Samsung_Galaxy_S]
+  - ['(?i)SHW-M110L', Samsung_Galaxy_S]
+  - ['(?i)SHW-M110K', Samsung_Galaxy_S]
+  - ['(?i)SHW-E210', Samsung_Galaxy_SIII]
+  - ['(?i)SHW-M250', Samsung_Galaxy_SII]
+  - ['(?i)SHW-M200', Samsung_Nexus_S]
+  - ['(?i)SHV-E300K', Samsung_Galaxy_SIV]
+  - ['(?i)SHV-E300S', Samsung_Galaxy_SIV]
+  - ['(?i)SHV-E300L', Samsung_Galaxy_SIV]
+  - ['(?i)SHV-E330K', Samsung_Galaxy_SIV]
+  - ['(?i)SHV-E330L', Samsung_Galaxy_SIV]
+  - ['(?i)SHV-E330S', Samsung_Galaxy_SIV]
+  - ['(?i)SHV-E210K', Samsung_Galaxy_SIII]
+  - ['(?i)SHV-E210S', Samsung_Galaxy_SIII]
+  - ['(?i)SHV-E210L', Samsung_Galaxy_SIII]
+  - ['(?i)SHV-E160K', Samsung_Galaxy_Note]
+  - ['(?i)SHV-E160L', Samsung_Galaxy_Note]
+  - ['(?i)SHV-E160S', Samsung_Galaxy_Note]
+  - ['(?i)SHV-E250K', Samsung_Galaxy_NoteII]
+  - ['(?i)SHV-E250L', Samsung_Galaxy_NoteII]
+  - ['(?i)SHV-E250S', Samsung_Galaxy_NoteII]
+  - ['(?i)SC-01E', Samsung_Galaxy_Tab]
+  - ['(?i)SC-02B', Samsung_Galaxy_S]
+  - ['(?i)SC-02C', Samsung_Galaxy_SII]
+  - ['(?i)SC-03D', Samsung_Galaxy_SII]
+  - ['(?i)SC-06D', Samsung_Galaxy_SIII]
+  - ['(?i)SC-03E', Samsung_Galaxy_SIII]
+  - ['(?i)SC-04E', Samsung_Galaxy_SIV]
+  - ['(?i)SC-05D', Samsung_Galaxy_Note]
+  - ['(?i)SC-02E', Samsung_Galaxy_NoteII]
+  - ['(?i)SM-N900A', Samsung_Galaxy_Note3]
+  - ['(?i)SM-N900V', Samsung_Galaxy_Note3]
+  - ['(?i)SM-N900P', Samsung_Galaxy_Note3]
+  - ['(?i)SM-N900R4', Samsung_Galaxy_Note3]
+  - ['(?i)SM-N900T', Samsung_Galaxy_Note3]
+  - ['(?i)SM-C101', Samsung_Galaxy_SIV]
+  - ['(?i)SM-T210', Samsung_Galaxy_Tab_3]
+  - ['(?i)SM-T211', Samsung_Galaxy_Tab_3]
+  - ['(?i)SM-T310', Samsung_Galaxy_Tab_3]
+  - ['(?i)SM-T311', Samsung_Galaxy_Tab_3]
+  - ['(?i)SM-T315', Samsung_Galaxy_Tab_3]
+  - ['(?i)ISW11SC', Samsung_Galaxy_SII]
+  - ['(?i)Galaxy', Samsung_Galaxy]
+  - ['(?i)Samsung', Samsung_Other]
+  - ['(?i)LG-', LG]
+  - ['(?i)L-\d{2}[D-E]', LG]
+  - ['(?i)VS\d{3}', LG]
+  - ['(?i); [A-Z\d]{3,4}i ', Sony]
+  - ['(?i)SO-\d{2}[D-F]', Sony_Xperia]
+  - ['(?i)SOL\d{2}', Sony_Xperia]
+  - ['(?i)LT\d{2}', Sony_Xperia]
+  - ['(?i)C6603', Sony_Xperia]
+  - ['(?i)WALKMAN', Sony]
+  - ['(?i)SGPT12', Sony]
+  - ['(?i)Sony', Sony]
+  - ['(?i)PlayStation', Sony]
+  - ['(?i)Symb', Nokia]
+  - ['; S[A-Z]H-[A-Z]\d{3}', Samsung_Other]
+  - ['(?i)motorola', Motorola_Other]
+  - [' DROID' , Motorola_Droid]
+  - ['(?i)XT\d{3}' , Motorola_Droid]
+  - ['MTS', MTS]
+  - ['MTC', MTS]
+  - ['(?i)Huawei', Huawei]
+  - ['(?i)Nexus S', Samsung_Nexus_S]
+  - ['(?i)Nexus 4', LG_Nexus_4]
+  - ['(?i)Nexus 7', Asus_Nexus_7]
+  - ['(?i)Nexus 10', Samsung_Nexus_10]
+  - ['(?i)Kindle', Amazon_Kindle]
+  - ['(?i)Silk-Accelerated', Amazon_Kindle]
+  - ['(?i)KFOT', Amazon_Kindle]
+  - ['(?i)KFTT', Amazon_Kindle]
+  - ['Lenovo', Lenovo]
+  - [' S\d{3}', Lenovo]
+  - ['(?i)RIM Tablet OS', BlackBerry]
+  - ['(?i)IdeaTab', Lenovo_IdeaTab]
+  - ['(?i) A1-810', Acer_Iconia_Tab]
+  - ['(?i) A\d{3}', Acer_Iconia_Tab]
+  - ['(?i) B1-710', Acer_Iconia_Tab]
+  - ['(?i) B1-A71', Acer_Iconia_Tab]
+  - ['(?i)LIFETAB', Medion_LIFETAB]
+  - ['(?i)TF\d{3}', Asus_Transformer_Pad]
+  - ['(?i)F-\d{2}[C-F]', Fujitsu]
+  - ['(?i)T-\d{2}[C-E]', Fujitsu]
+  - ['(?i)(IS(W)?)?\d{2,3}F', Fujitsu]
+  - ['(?i)ODYS', ODYS]
+  - ['(?i)NOON', ODYS]
+  - ['(?i)LOOX', ODYS]
+  - ['(?i)C5\d{3}', Kyocera]
+  - ['(?i)Hydro', Kyocera]
+  - ['(?i)KY[L|Y]\d{2}', Kyocera]
+  - ['(?i)URBANO', Kyocera]
+  - ['(?i)SH-\d{2}[B-D]?', Sharp]
+  - ['(?i)SBM\d{3}SH', Sharp]
+  - ['(?i)SHL\d{2}', Sharp]
+  - ['(?i)P-\d{2}[D-E]', Panasonic]
+  - ['(?i)N-\d{2}[A-E]', NEC]
+  - ['(?i)ZTE', ZTE]
+  - ['(?i)N\d{3,4}', ZTE]
+  - ['ADR910L', Pantech]
+  - ['(?i)pantech', Pantech]
+  - ['(?i)EVO', HTC_Other]
+  - ['P[A-Z]\d{3}', HTC_Other]
+  - ['HT[L|X]\d{2}', HTC_Other]
+  - ['(?i)C\d{3}', HTC_Other]
+  - ['(?i)IS', HTC_Other]
+  - ['Incredible', HTC_Other]
+  - ['Spark', HTC_Other]
+  - ['Sensation', HTC_Other]
+  - ['Surfer', Explay]
+  - ['WEXLER', WEXLER]
+  - ['(?i)MegaFon', Megafon]
+  - ['Beeline', Beeline]
+  - [' Fly ', Fly]
+  - ['IQ\d{3}', Fly]
+  - ['ALCATEL', ALCATEL]
+  - ['W\d{3}', Philips]
+  - ['Philips', Philips]
+  - ['PAP\d{4}', Prestigio]
+  - ['PMP\d{4}', Prestigio]
+  - ['(?i)GT-', Samsung_Galaxy]
+  - ['(?i)SGH-', Samsung_Galaxy]
+  - ['(?i)SCH-', Samsung_Galaxy]
+  - ['(?i)SPH-', Samsung_Galaxy]
+  - ['(?i)SHW-', Samsung_Galaxy]
+  - ['(?i)SHV-', Samsung_Galaxy]
+  - ['(?i)SC-', Samsung_Galaxy]
+  - ['(?i)SM-', Samsung_Galaxy]
+  - ['ADR\d{3}', HTC_Other]
+  - ['ADR910L', Pantech]

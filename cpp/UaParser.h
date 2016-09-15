@@ -20,13 +20,25 @@ struct Agent : Device {
       (minor.empty() ? "0" : minor) + "." +
       (patch.empty() ? "0" : patch);
   }
+  std::string toVersionString2() const {
+    if (! major.empty() && ! minor.empty() && ! patch.empty())
+      return major + "." + minor + "." + patch;
+    else if (! major.empty() && ! minor.empty() )
+      return major + "." + minor;
+    else if  (! major.empty() )
+      return major;
+    else return "";
+  }
 };
 
 typedef Agent Os;
 typedef Agent Browser;
+typedef Agent Vendor;
 
 struct UserAgent {
   Device device;
+  Device deviceType;
+  Vendor vendor;
 
   Os os;
   Browser browser;
